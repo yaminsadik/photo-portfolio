@@ -1,0 +1,27 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Stylized camera lens/aperture - bold and simple for favicon -->
+  <g transform="translate(256, 256)">
+    <!-- Main lens body -->
+    <circle r="190" fill="#f8f9fa"/>
+    
+    <!-- Inner ring -->
+    <circle r="150" fill="transparent" stroke="#1a1a1a" stroke-width="20"/>
+    
+    <!-- Aperture opening -->
+    <circle r="80" fill="#1a1a1a"/>
+    
+    <!-- Six aperture marks around the inner ring -->
+    <g stroke="#1a1a1a" stroke-width="16" stroke-linecap="round">
+      <line x1="0" y1="-130" x2="0" y2="-170"/>
+      <line x1="112" y1="-65" x2="147" y2="-85"/>
+      <line x1="112" y1="65" x2="147" y2="85"/>
+      <line x1="0" y1="130" x2="0" y2="170"/>
+      <line x1="-112" y1="65" x2="-147" y2="85"/>
+      <line x1="-112" y1="-65" x2="-147" y2="-85"/>
+    </g>
+    
+    <!-- Center highlight -->
+    <circle r="25" fill="#f8f9fa"/>
+    <circle r="8" fill="#1a1a1a"/>
+  </g>
+</svg>
