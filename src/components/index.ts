@@ -6,3 +6,4 @@ export { LightboxModal } from './LightboxModal';
 export { AboutSection } from './AboutSection';
 export { ContactSection } from './ContactSection';
 export { Footer } from './Footer';
+export { SEO } from './SEO';

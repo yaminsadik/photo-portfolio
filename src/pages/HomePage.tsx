@@ -8,7 +8,7 @@
  *   `id` matches `featuredSectionId`.
  */
 import { Link } from "react-router-dom";
-import { HeroGallery, ImageGrid } from "../components";
+import { HeroGallery, ImageGrid, SEO } from "../components";
 import {
   heroContent,
   homePageFeatured,
@@ -31,6 +31,11 @@ export function HomePage() {
 
   return (
     <main>
+      <SEO
+        title="Photography Portfolio – Capturing Authentic Moments"
+        description="Sadik Visuals is a St. Louis photography studio specialising in candid portraits, lifestyle, and documentary photography. 8+ years capturing authentic moments. View the portfolio."
+        path="/"
+      />
       {/* Hero Section */}
       <HeroGallery
         headline={heroContent.headline}

@@ -4,7 +4,7 @@
  * category filter toolbar.
  */
 import { useState } from "react";
-import { GallerySection } from "../components";
+import { GallerySection, SEO } from "../components";
 import { gallerySections } from "../data/siteContent";
 
 /**
@@ -26,7 +26,7 @@ export function WorkPage() {
 
   const totalImages = gallerySections.reduce(
     (sum, s) => sum + s.images.length,
-    0
+    0,
   );
 
   const handleFilterChange = (id: string | null) => {
@@ -40,6 +40,11 @@ export function WorkPage() {
 
   return (
     <main className="pt-20">
+      <SEO
+        title="Selected Work – Photography Portfolio"
+        description="Browse Sadik Visuals' full photography portfolio. Portraits, landscapes, and documentary photography from St. Louis, MO. Candid, environmental, and lifestyle work."
+        path="/work"
+      />
       {/* Page Header */}
       <section className="py-16 md:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
