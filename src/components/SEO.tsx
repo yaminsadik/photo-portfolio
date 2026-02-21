@@ -1,10 +1,10 @@
 /**
  * @file SEO.tsx
  * @description Reusable SEO component for per-page meta tags.
- * Uses react-helmet-async to inject title, meta description,
- * Open Graph, Twitter Card, and canonical link into <head>.
+ * Uses React 19's built-in document metadata hoisting — no external
+ * library needed. React 19 automatically moves <title>, <meta>, and
+ * <link> elements rendered in components up into <head>.
  */
-import { Helmet } from "react-helmet-async";
 
 const SITE_URL = "https://photo-portfolio-grri.onrender.com";
 const SITE_NAME = "Sadik Visuals";
@@ -32,8 +32,8 @@ export function SEO({
   const fullTitle = `${title} | ${SITE_NAME}`;
 
   return (
-    <Helmet>
-      {/* Primary */}
+    <>
+      {/* Primary — React 19 hoists these to <head> automatically */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={canonical} />
@@ -46,16 +46,16 @@ export function SEO({
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content={SITE_NAME} />
 
-      {/* Twitter */}
+      {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
 
-      {/* JSON-LD */}
+      {/* JSON-LD Structured Data */}
       {jsonLd && (
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       )}
-    </Helmet>
+    </>
   );
 }
