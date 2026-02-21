@@ -1,81 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-
-  <!-- Home Page -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://photo-portfolio-grri.onrender.com/</loc>
     <lastmod>2026-02-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://photo-portfolio-grri.onrender.com/images/hero/hero-1.jpg</image:loc>
-      <image:title>Sadik Visuals – Photography Portfolio</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://photo-portfolio-grri.onrender.com/images/hero/hero-2.jpg</image:loc>
-      <image:title>Sadik Visuals – Capturing Authentic Moments</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://photo-portfolio-grri.onrender.com/images/hero/hero-3.jpg</image:loc>
-      <image:title>Sadik Visuals – Visual Stories</image:title>
-    </image:image>
   </url>
-
-  <!-- Work / Portfolio Page -->
   <url>
     <loc>https://photo-portfolio-grri.onrender.com/work</loc>
     <lastmod>2026-02-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://photo-portfolio-grri.onrender.com/images/gallery/people/people-1.jpg</image:loc>
-      <image:title>Portrait Photography – Quiet Reflection</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://photo-portfolio-grri.onrender.com/images/gallery/places/place-1.jpg</image:loc>
-      <image:title>Landscape Photography – Horizon</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://photo-portfolio-grri.onrender.com/images/gallery/moments/moments-1.jpg</image:loc>
-      <image:title>Documentary Photography – Celebration</image:title>
-    </image:image>
   </url>
-
-  <!-- About Page -->
   <url>
     <loc>https://photo-portfolio-grri.onrender.com/about</loc>
     <lastmod>2026-02-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://photo-portfolio-grri.onrender.com/images/about/photographer.jpg</image:loc>
-      <image:title>Sadik Visuals – About the Photographer</image:title>
-    </image:image>
   </url>
-
-  <!-- Contact Page -->
   <url>
     <loc>https://photo-portfolio-grri.onrender.com/contact</loc>
     <lastmod>2026-02-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
-  <!-- Privacy Policy -->
   <url>
     <loc>https://photo-portfolio-grri.onrender.com/privacy</loc>
     <lastmod>2026-02-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
-
-  <!-- Terms of Service -->
   <url>
     <loc>https://photo-portfolio-grri.onrender.com/terms</loc>
     <lastmod>2026-02-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
-
 </urlset>
