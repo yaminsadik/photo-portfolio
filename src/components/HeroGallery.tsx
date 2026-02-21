@@ -125,7 +125,6 @@ export function HeroGallery({
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/50">
-        <span className="text-[10px] tracking-widest uppercase mb-1">Scroll</span>
         <svg
           className="w-5 h-5 scroll-bounce"
           fill="none"
