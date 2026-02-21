@@ -1,12 +1,31 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import type { NavLink as NavLinkType } from '../data/siteContent';
+/**
+ * @file Navbar.tsx
+ * @description Fixed top navigation bar with scroll-aware and route-aware styling.
+ */
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import type { NavLink as NavLinkType } from "../data/siteContent";
 
+/**
+ * Props for the {@link Navbar} component.
+ */
 interface NavbarProps {
+  /** Brand name displayed as the left-side logo / home link. */
   siteName: string;
+  /** Ordered list of navigation links rendered on desktop and in the mobile menu. */
   links: NavLinkType[];
 }
 
+/**
+ * Fixed top navigation bar with adaptive styling:
+ * - **Transparent** with white text when on the Home page and the user has
+ *   not yet scrolled past 50 px (hero section).
+ * - **Frosted-glass** (`bg-white/95 + backdrop-blur`) once the user scrolls
+ *   or navigates to any non-home route.
+ * - Collapses to a hamburger menu on screens narrower than `md` (768 px).
+ * - The mobile menu auto-closes on route change.
+ * - The active link is underlined to indicate the current page.
+ */
 export function Navbar({ siteName, links }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,22 +36,24 @@ export function Navbar({ siteName, links }: NavbarProps) {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
 
-  const isHomePage = location.pathname === '/';
+  const isHomePage = location.pathname === "/";
   // Use light text only on homepage when not scrolled (hero has dark background)
   const useLightText = isHomePage && !isScrolled;
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || !isHomePage ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
+        isScrolled || !isHomePage
+          ? "bg-white/95 backdrop-blur-sm shadow-sm"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,7 +62,7 @@ export function Navbar({ siteName, links }: NavbarProps) {
           <Link
             to="/"
             className={`text-xl md:text-2xl font-light tracking-wider transition-colors ${
-              useLightText ? 'text-white' : 'text-gray-900'
+              useLightText ? "text-white" : "text-gray-900"
             }`}
           >
             {siteName}
@@ -54,8 +75,8 @@ export function Navbar({ siteName, links }: NavbarProps) {
                 key={link.path}
                 to={link.path}
                 className={`text-sm tracking-wide transition-colors hover:opacity-70 ${
-                  useLightText ? 'text-white' : 'text-gray-700'
-                } ${location.pathname === link.path ? 'border-b border-current' : ''}`}
+                  useLightText ? "text-white" : "text-gray-700"
+                } ${location.pathname === link.path ? "border-b border-current" : ""}`}
               >
                 {link.label}
               </Link>
@@ -66,7 +87,7 @@ export function Navbar({ siteName, links }: NavbarProps) {
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className={`md:hidden p-2 transition-colors ${
-              useLightText ? 'text-white' : 'text-gray-900'
+              useLightText ? "text-white" : "text-gray-900"
             }`}
             aria-label="Toggle menu"
           >
@@ -99,7 +120,7 @@ export function Navbar({ siteName, links }: NavbarProps) {
       {/* Mobile Menu */}
       <div
         className={`md:hidden absolute top-full left-0 right-0 bg-white shadow-lg transition-all duration-300 ${
-          isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+          isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
         <div className="px-4 py-6 space-y-4">
@@ -108,7 +129,7 @@ export function Navbar({ siteName, links }: NavbarProps) {
               key={link.path}
               to={link.path}
               className={`block text-lg text-gray-800 hover:text-gray-500 transition-colors ${
-                location.pathname === link.path ? 'font-medium' : ''
+                location.pathname === link.path ? "font-medium" : ""
               }`}
             >
               {link.label}

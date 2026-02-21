@@ -1,5 +1,16 @@
-import { privacyPolicyContent } from '../data/siteContent';
+/**
+ * @file PrivacyPolicyPage.tsx
+ * @description Privacy Policy page — auto-rendered from `privacyPolicyContent` in `siteContent.ts`.
+ */
+import { privacyPolicyContent } from "../data/siteContent";
 
+/**
+ * Route: `/privacy`
+ *
+ * Renders the full Privacy Policy document. Section headings and body text are
+ * driven entirely by {@link privacyPolicyContent} — update that object in
+ * `siteContent.ts` to change the policy text.
+ */
 export function PrivacyPolicyPage() {
   return (
     <main className="pt-20">

@@ -1,39 +1,85 @@
-// ============================================
-// SITE CONTENT CONFIGURATION
-// ============================================
-// Edit this file to update ALL site content.
-// No need to touch any JSX files.
-// ============================================
+/**
+ * @file siteContent.ts
+ * @description Central content configuration for the entire site.
+ *
+ * This is the **single source of truth** for all user-facing content:
+ * text, image paths, navigation links, contact details, and legal pages.
+ *
+ * Edit the exported constants below to update the site. No JSX files need
+ * to be touched for routine content changes.
+ */
 
+/**
+ * Represents a single image displayed in a gallery grid or the hero slideshow.
+ */
 export interface GalleryImage {
+  /** Path to the image file, relative to the `public/` directory (e.g. `'/images/gallery/people/people-1.jpg'`). */
   src: string;
+  /** Accessible alt text describing the image content. */
   alt: string;
+  /** Optional caption shown in the lightbox when the image is opened full-screen. */
   title?: string;
+  /**
+   * When `true`, the image spans two columns in the bento / mixed grid layout
+   * used on the Home page featured section. Has no effect in standard grids.
+   */
   isLandscape?: boolean;
 }
 
+/**
+ * A named collection of {@link GalleryImage} objects displayed as a section
+ * on the Work page and optionally featured on the Home page.
+ */
 export interface GallerySection {
+  /** Unique slug used by the Work page category filter and `homePageFeatured.featuredSectionId`. */
   id: string;
+  /** Display title shown above the image grid. */
   title: string;
+  /** Optional subtitle shown below the title. */
   description?: string;
+  /** Ordered list of images in this section. */
   images: GalleryImage[];
+  /**
+   * Controls the CSS aspect-ratio applied to every image tile in the grid.
+   * - `'portrait'`  → 4/5 ratio (default)
+   * - `'landscape'` → 3/2 ratio
+   * - `'square'`    → 1/1 ratio
+   */
   aspectRatio?: 'portrait' | 'landscape' | 'square';
 }
 
+/**
+ * A navigation link entry used in the top navbar and footer.
+ */
 export interface NavLink {
+  /** Human-readable link text. */
   label: string;
+  /** React Router path, e.g. `'/work'`. */
   path: string;
 }
 
+/**
+ * A social / contact link displayed as an icon in the Contact section.
+ */
 export interface SocialLink {
+  /** Display name of the platform (e.g. `'Instagram'`). */
   platform: string;
+  /** Full URL including protocol, e.g. `'https://instagram.com/handle'` or `'mailto:you@example.com'`. */
   url: string;
+  /** Icon identifier used to render the correct SVG icon. */
   icon: 'instagram' | 'email' | 'twitter' | 'linkedin' | 'behance';
 }
 
 // ============================================
 // SITE METADATA
 // ============================================
+/**
+ * Global metadata used throughout the site.
+ * - `name`      → Navbar logo text and footer branding
+ * - `tagline`   → Short marketing phrase (currently unused in UI, available for meta tags)
+ * - `description` → Page description available for `<meta name="description">`
+ * - `copyright` → Footer copyright line
+ */
 export const siteMetadata = {
   name: 'Sadik Visuals',
   tagline: 'Capturing Authentic Moments',
@@ -44,6 +90,10 @@ export const siteMetadata = {
 // ============================================
 // NAVIGATION
 // ============================================
+/**
+ * Top-level navigation links rendered in the {@link Navbar} component.
+ * Add, remove or reorder entries here to update the navbar and mobile menu.
+ */
 export const navigation: NavLink[] = [
   { label: 'Home', path: '/' },
   { label: 'Work', path: '/work' },
@@ -54,6 +104,14 @@ export const navigation: NavLink[] = [
 // ============================================
 // HERO SECTION
 // ============================================
+/**
+ * Content for the full-screen hero slideshow on the Home page.
+ *
+ * - Place hero images in `public/images/hero/`.
+ * - Recommended image size: ≥ 1920 × 1080 px, landscape orientation.
+ * - The slideshow auto-advances every 5 seconds. Add more `images` entries to
+ *   extend the cycle.
+ */
 export const heroContent = {
   headline: 'Visual Stories',
   subheadline: "Photography that captures the essence of life's fleeting moments.",
@@ -70,7 +128,16 @@ export const heroContent = {
 // ============================================
 // GALLERY SECTIONS
 // ============================================
-// Add images to /public/images/gallery/{category}/
+/**
+ * All gallery categories displayed on the Work page.
+ *
+ * Each entry renders as a titled section with a filterable image grid.
+ * Image files should be placed in `public/images/gallery/{category}/`.
+ *
+ * - The `id` must be unique — it is used by the Work page category filter
+ *   and by `homePageFeatured.featuredSectionId`.
+ * - Set `aspectRatio` to control the CSS aspect-ratio applied to image tiles.
+ */
 export const gallerySections: GallerySection[] = [
   {
     id: 'people',
@@ -117,6 +184,13 @@ export const gallerySections: GallerySection[] = [
 // ============================================
 // ABOUT SECTION
 // ============================================
+/**
+ * Content for the About page.
+ *
+ * - `paragraphs` — each string renders as a separate `<p>` element.
+ * - `image`      — photographer portrait; place in `public/images/about/`.
+ * - `stats`      — displayed as highlight cards (e.g. years of experience).
+ */
 export const aboutContent = {
   title: 'About',
   subtitle: 'The Story Behind the Lens',
@@ -137,6 +211,12 @@ export const aboutContent = {
 // ============================================
 // CONTACT SECTION
 // ============================================
+/**
+ * Content for the Contact page.
+ *
+ * - `socialLinks` — array of {@link SocialLink} objects rendered as icon buttons.
+ * - `availability` — free-text string displayed as a booking status note.
+ */
 export const contactContent = {
   title: 'Get in Touch',
   subtitle: "Let's create something beautiful together",
@@ -153,6 +233,12 @@ export const contactContent = {
 // ============================================
 // FOOTER
 // ============================================
+/**
+ * Content for the site footer.
+ *
+ * - `text`  — short tagline displayed beside the copyright notice.
+ * - `links` — secondary nav links (e.g. Privacy Policy, Terms of Service).
+ */
 export const footerContent = {
   text: 'Crafted with care in St. Louis',
   links: [
@@ -164,8 +250,16 @@ export const footerContent = {
 // ============================================
 // HOME PAGE FEATURED WORK
 // ============================================
-// Select which gallery section to feature on home page
-// For mixed layout: set isLandscape: true for wide images (they span 2 columns)
+/**
+ * Controls the "Selected Work" section on the Home page.
+ *
+ * Two selection modes:
+ * - **Manual** (`useManualSelection: true`) — use the `manualSelection` array.
+ *   Set `isLandscape: true` on an image to make it span two columns in the
+ *   bento / mixed grid layout.
+ * - **Section** (`useManualSelection: false`) — pull images from the
+ *   {@link gallerySections} entry whose `id` matches `featuredSectionId`.
+ */
 export const homePageFeatured = {
   sectionTitle: 'Selected Work',
   sectionSubtitle: 'A glimpse into recent projects',
@@ -187,6 +281,11 @@ export const homePageFeatured = {
 // ============================================
 // PRIVACY POLICY
 // ============================================
+/**
+ * Content for the Privacy Policy page (`/privacy`).
+ * Each `sections` entry renders as a heading + paragraph block.
+ * Update `lastUpdated` whenever the policy changes.
+ */
 export const privacyPolicyContent = {
   title: 'Privacy Policy',
   lastUpdated: 'January 1, 2026',
@@ -217,6 +316,11 @@ export const privacyPolicyContent = {
 // ============================================
 // TERMS OF SERVICE
 // ============================================
+/**
+ * Content for the Terms of Service page (`/terms`).
+ * Each `sections` entry renders as a heading + paragraph block.
+ * Update `lastUpdated` whenever the terms change.
+ */
 export const termsOfServiceContent = {
   title: 'Terms of Service',
   lastUpdated: 'January 1, 2026',

@@ -1,6 +1,16 @@
-import { ContactSection } from '../components';
-import { contactContent } from '../data/siteContent';
+/**
+ * @file ContactPage.tsx
+ * @description Contact page — photographer contact details and social links.
+ */
+import { ContactSection } from "../components";
+import { contactContent } from "../data/siteContent";
 
+/**
+ * Route: `/contact`
+ *
+ * Renders a page header and the {@link ContactSection} component populated
+ * with data from {@link contactContent} in `siteContent.ts`.
+ */
 export function ContactPage() {
   return (
     <main className="pt-20">

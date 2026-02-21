@@ -1,5 +1,16 @@
-import { termsOfServiceContent } from '../data/siteContent';
+/**
+ * @file TermsOfServicePage.tsx
+ * @description Terms of Service page — auto-rendered from `termsOfServiceContent` in `siteContent.ts`.
+ */
+import { termsOfServiceContent } from "../data/siteContent";
 
+/**
+ * Route: `/terms`
+ *
+ * Renders the full Terms of Service document. Section headings and body text are
+ * driven entirely by {@link termsOfServiceContent} — update that object in
+ * `siteContent.ts` to change the terms.
+ */
 export function TermsOfServicePage() {
   return (
     <main className="pt-20">

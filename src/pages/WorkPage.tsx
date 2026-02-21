@@ -1,7 +1,21 @@
-import { useState } from 'react';
-import { GallerySection } from '../components';
-import { gallerySections } from '../data/siteContent';
+/**
+ * @file WorkPage.tsx
+ * @description Work / portfolio page — displays all gallery sections with a
+ * category filter toolbar.
+ */
+import { useState } from "react";
+import { GallerySection } from "../components";
+import { gallerySections } from "../data/siteContent";
 
+/**
+ * Route: `/work`
+ *
+ * Renders a page header, a set of category filter buttons (one per
+ * {@link GallerySection}), and the filtered gallery sections.
+ *
+ * Selecting "All" resets the filter and shows every section.
+ * Selecting a category label shows only that section's image grid.
+ */
 export function WorkPage() {
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
@@ -18,7 +32,8 @@ export function WorkPage() {
             Selected Work
           </h1>
           <p className="text-gray-600 font-light max-w-2xl mx-auto">
-            A curated collection of photographs capturing life's authentic moments.
+            A curated collection of photographs capturing life's authentic
+            moments.
           </p>
 
           {/* Category Filter */}
@@ -27,8 +42,8 @@ export function WorkPage() {
               onClick={() => setActiveSection(null)}
               className={`px-6 py-2 text-sm tracking-wider transition-all duration-300 ${
                 activeSection === null
-                  ? 'bg-gray-900 text-white'
-                  : 'border border-gray-300 text-gray-600 hover:border-gray-900'
+                  ? "bg-gray-900 text-white"
+                  : "border border-gray-300 text-gray-600 hover:border-gray-900"
               }`}
             >
               All
@@ -39,8 +54,8 @@ export function WorkPage() {
                 onClick={() => setActiveSection(section.id)}
                 className={`px-6 py-2 text-sm tracking-wider transition-all duration-300 ${
                   activeSection === section.id
-                    ? 'bg-gray-900 text-white'
-                    : 'border border-gray-300 text-gray-600 hover:border-gray-900'
+                    ? "bg-gray-900 text-white"
+                    : "border border-gray-300 text-gray-600 hover:border-gray-900"
                 }`}
               >
                 {section.title}

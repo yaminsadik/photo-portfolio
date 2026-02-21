@@ -1,15 +1,48 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import type { GalleryImage } from '../data/siteContent';
+/**
+ * @file HeroGallery.tsx
+ * @description Full-screen hero slideshow component displayed at the top of the Home page.
+ */
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import type { GalleryImage } from "../data/siteContent";
 
+/**
+ * Props for the {@link HeroGallery} component.
+ */
 interface HeroGalleryProps {
+  /** Main headline displayed over the hero image (large white text). */
   headline: string;
+  /** Supporting sentence rendered below the headline. */
   subheadline: string;
+  /** Label for the call-to-action button. */
   ctaText: string;
+  /** React Router path the CTA button navigates to. */
   ctaLink: string;
+  /** Ordered list of images for the slideshow. Auto-advances every 5 seconds. */
   images: GalleryImage[];
 }
 
+/**
+ * Full-screen auto-rotating image slideshow used as the site hero.
+ *
+ * Features:
+ * - Background images cross-fade with a 1 s CSS transition.
+ * - The active image applies a slow Ken Burns scale animation (10 s).
+ * - Dot indicators at the bottom allow manual slide selection.
+ * - A "SCROLL" indicator is shown in the bottom-right corner on desktop.
+ * - Overlay text and CTA fade in after the first image loads.
+ *
+ * @example
+ * ```tsx
+ * <HeroGallery
+ *   headline="Visual Stories"
+ *   subheadline="Photography that captures..."
+ *   ctaText="View Work"
+ *   ctaLink="/work"
+ *   images={heroContent.images}
+ * />
+ * ```
+ */
 export function HeroGallery({
   headline,
   subheadline,
@@ -37,14 +70,14 @@ export function HeroGallery({
         <div
           key={image.src}
           className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentIndex ? 'opacity-100' : 'opacity-0'
+            index === currentIndex ? "opacity-100" : "opacity-0"
           }`}
         >
           <img
             src={image.src}
             alt={image.alt}
             className={`w-full h-full object-cover transition-transform duration-[10000ms] ${
-              index === currentIndex ? 'scale-105' : 'scale-100'
+              index === currentIndex ? "scale-105" : "scale-100"
             }`}
             onLoad={() => index === 0 && setIsLoaded(true)}
           />
@@ -57,7 +90,7 @@ export function HeroGallery({
       {/* Content */}
       <div
         className={`relative z-10 h-full flex flex-col justify-center items-center text-center px-4 transition-opacity duration-1000 ${
-          isLoaded ? 'opacity-100' : 'opacity-0'
+          isLoaded ? "opacity-100" : "opacity-0"
         }`}
       >
         <h1 className="text-4xl md:text-6xl lg:text-7xl text-white font-light tracking-wider mb-4">
@@ -82,7 +115,7 @@ export function HeroGallery({
               key={index}
               onClick={() => setCurrentIndex(index)}
               className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === currentIndex ? 'bg-white w-8' : 'bg-white/50'
+                index === currentIndex ? "bg-white w-8" : "bg-white/50"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />

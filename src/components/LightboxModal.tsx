@@ -1,14 +1,37 @@
-import { useState, useEffect, useCallback } from 'react';
-import type { GalleryImage } from '../data/siteContent';
+/**
+ * @file LightboxModal.tsx
+ * @description Full-screen image viewer modal used by {@link ImageGrid}.
+ */
+import { useState, useEffect, useCallback } from "react";
+import type { GalleryImage } from "../data/siteContent";
 
+/**
+ * Props for the {@link LightboxModal} component.
+ */
 interface LightboxModalProps {
+  /** The full ordered list of images in the current gallery section. */
   images: GalleryImage[];
+  /** Index of the image currently shown in the lightbox. */
   currentIndex: number;
+  /** Whether the lightbox overlay is visible. */
   isOpen: boolean;
+  /** Callback invoked when the user dismisses the lightbox (backdrop click, close button, or `Esc`). */
   onClose: () => void;
+  /** Callback invoked with the new index when the user navigates to a different image. */
   onNavigate: (index: number) => void;
 }
 
+/**
+ * Modal overlay that displays a single image full-screen with navigation controls.
+ *
+ * Features:
+ * - Previous / next arrow buttons for sequential navigation.
+ * - Keyboard navigation: `ArrowLeft` / `ArrowRight` to navigate, `Esc` to close.
+ * - Backdrop click closes the modal.
+ * - `document.body` overflow is locked while the modal is open.
+ * - Shows a loading skeleton while the image is fetching.
+ * - Displays the image `title` as a caption and its index in the sequence.
+ */
 export function LightboxModal({
   images,
   currentIndex,
@@ -35,31 +58,31 @@ export function LightboxModal({
       if (!isOpen) return;
 
       switch (e.key) {
-        case 'Escape':
+        case "Escape":
           onClose();
           break;
-        case 'ArrowLeft':
+        case "ArrowLeft":
           handlePrevious();
           break;
-        case 'ArrowRight':
+        case "ArrowRight":
           handleNext();
           break;
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, onClose, handlePrevious, handleNext]);
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
 
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [isOpen]);
 
@@ -78,7 +101,12 @@ export function LightboxModal({
         className="absolute top-4 right-4 z-10 p-2 text-white/70 hover:text-white transition-colors"
         aria-label="Close lightbox"
       >
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg
+          className="w-8 h-8"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -97,7 +125,12 @@ export function LightboxModal({
         className="absolute left-4 top-1/2 -translate-y-1/2 p-2 text-white/70 hover:text-white transition-colors"
         aria-label="Previous image"
       >
-        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg
+          className="w-10 h-10"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -116,7 +149,12 @@ export function LightboxModal({
         className="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-white/70 hover:text-white transition-colors"
         aria-label="Next image"
       >
-        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg
+          className="w-10 h-10"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -143,7 +181,7 @@ export function LightboxModal({
           src={currentImage.src}
           alt={currentImage.alt}
           className={`max-w-full max-h-[85vh] object-contain transition-opacity duration-300 ${
-            isLoading ? 'opacity-0' : 'opacity-100'
+            isLoading ? "opacity-0" : "opacity-100"
           }`}
           onLoad={() => setIsLoading(false)}
         />

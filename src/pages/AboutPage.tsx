@@ -1,6 +1,16 @@
-import { AboutSection } from '../components';
-import { aboutContent } from '../data/siteContent';
+/**
+ * @file AboutPage.tsx
+ * @description About page — photographer bio, portrait image, and stats.
+ */
+import { AboutSection } from "../components";
+import { aboutContent } from "../data/siteContent";
 
+/**
+ * Route: `/about`
+ *
+ * Renders a page header and the {@link AboutSection} component populated
+ * with data from {@link aboutContent} in `siteContent.ts`.
+ */
 export function AboutPage() {
   return (
     <main className="pt-20">

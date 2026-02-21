@@ -1,16 +1,33 @@
-import { Link } from 'react-router-dom';
-import { HeroGallery, ImageGrid } from '../components';
+/**
+ * @file HomePage.tsx
+ * @description Home page — renders the hero slideshow and the featured work grid.
+ *
+ * Featured images are sourced from {@link homePageFeatured} in `siteContent.ts`:
+ * - If `useManualSelection` is `true`, the `manualSelection` array is used.
+ * - Otherwise, images are pulled from the {@link gallerySections} entry whose
+ *   `id` matches `featuredSectionId`.
+ */
+import { Link } from "react-router-dom";
+import { HeroGallery, ImageGrid } from "../components";
 import {
   heroContent,
   homePageFeatured,
   gallerySections,
-} from '../data/siteContent';
+} from "../data/siteContent";
 
+/**
+ * Route: `/`
+ *
+ * Sections:
+ * 1. {@link HeroGallery} — full-screen auto-rotating slideshow with headline and CTA.
+ * 2. Selected Work — bento image grid with a "View All Work" link to `/work`.
+ */
 export function HomePage() {
   // Get featured images either from manual selection or from a gallery section
   const featuredImages = homePageFeatured.useManualSelection
     ? homePageFeatured.manualSelection
-    : gallerySections.find((s) => s.id === homePageFeatured.featuredSectionId)?.images || [];
+    : gallerySections.find((s) => s.id === homePageFeatured.featuredSectionId)
+        ?.images || [];
 
   return (
     <main>
