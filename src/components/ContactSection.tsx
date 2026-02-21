@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { SocialLink } from '../data/siteContent';
 
 interface ContactSectionProps {
@@ -63,23 +64,59 @@ export function ContactSection({
   availability,
   socialLinks,
 }: ContactSectionProps) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // fallback: do nothing silently
+    }
+  };
+
   return (
     <section className="py-16 md:py-24 bg-gray-50">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Header */}
-        <h2 className="text-3xl md:text-4xl font-light tracking-wide text-gray-900 mb-4">
+        <h2 className="text-3xl md:text-4xl font-serif font-light tracking-wide text-gray-900 mb-4">
           {title}
         </h2>
         <p className="text-lg text-gray-600 font-light mb-4">{subtitle}</p>
         <p className="text-gray-600 mb-12">{description}</p>
 
         {/* Email - Main CTA */}
-        <a
-          href={`mailto:${email}`}
-          className="inline-block text-2xl md:text-3xl text-gray-900 hover:text-gray-600 transition-colors mb-8"
-        >
-          {email}
-        </a>
+        <div className="mb-8 flex flex-col items-center gap-3">
+          <a
+            href={`mailto:${email}`}
+            className="group inline-block text-3xl md:text-4xl font-serif font-light text-gray-900 relative"
+          >
+            {email}
+            <span className="absolute bottom-0 left-0 w-0 h-px bg-gray-900 transition-all duration-300 group-hover:w-full" />
+          </a>
+          <button
+            onClick={handleCopyEmail}
+            className="flex items-center gap-1.5 text-xs tracking-wider text-gray-400 hover:text-gray-700 transition-colors duration-200"
+            aria-label="Copy email address"
+          >
+            {copied ? (
+              <>
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                Copied
+              </>
+            ) : (
+              <>
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+                Copy address
+              </>
+            )}
+          </button>
+        </div>
 
         {/* Other Contact Info */}
         <div className="space-y-4 mb-12">

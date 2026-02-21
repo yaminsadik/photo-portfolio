@@ -2,7 +2,7 @@
  * @file LightboxModal.tsx
  * @description Full-screen image viewer modal used by {@link ImageGrid}.
  */
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import type { GalleryImage } from "../data/siteContent";
 
 /**
@@ -40,6 +40,7 @@ export function LightboxModal({
   onNavigate,
 }: LightboxModalProps) {
   const [isLoading, setIsLoading] = useState(true);
+  const touchStartX = useRef<number | null>(null);
 
   const handlePrevious = useCallback(() => {
     const newIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
@@ -52,6 +53,19 @@ export function LightboxModal({
     onNavigate(newIndex);
     setIsLoading(true);
   }, [currentIndex, images.length, onNavigate]);
+
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  }, []);
+
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const delta = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(delta) > 50) {
+      delta < 0 ? handleNext() : handlePrevious();
+    }
+    touchStartX.current = null;
+  }, [handleNext, handlePrevious]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -94,6 +108,8 @@ export function LightboxModal({
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 lightbox-backdrop"
       onClick={onClose}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       {/* Close Button */}
       <button
@@ -194,7 +210,7 @@ export function LightboxModal({
         )}
 
         {/* Counter */}
-        <p className="mt-2 text-white/50 text-xs">
+        <p className="mt-2 text-white/70 text-sm tracking-widest">
           {currentIndex + 1} / {images.length}
         </p>
       </div>

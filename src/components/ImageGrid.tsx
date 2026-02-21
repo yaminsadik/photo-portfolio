@@ -123,7 +123,9 @@ export function ImageGrid({
           {images.map((image, index) => (
             <div
               key={`${image.src}-${index}`}
-              className="group relative mb-4 md:mb-6 overflow-hidden bg-gray-100 cursor-pointer break-inside-avoid"
+              className={`group relative mb-4 md:mb-6 overflow-hidden bg-gray-100 cursor-pointer break-inside-avoid ${
+                !loadedImages.has(index) ? "min-h-48" : ""
+              }`}
               onClick={() => handleImageClick(index)}
             >
               {/* Loading placeholder */}

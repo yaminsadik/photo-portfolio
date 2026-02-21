@@ -93,7 +93,7 @@ export function HeroGallery({
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
       >
-        <h1 className="text-4xl md:text-6xl lg:text-7xl text-white font-light tracking-wider mb-4">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl text-white font-serif font-light italic tracking-wide mb-4">
           {headline}
         </h1>
         <p className="text-lg md:text-xl text-white/80 font-light max-w-2xl mb-8">
@@ -109,7 +109,7 @@ export function HeroGallery({
 
       {/* Image Indicators */}
       {images.length > 1 && (
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2">
+        <div className="absolute bottom-14 left-1/2 -translate-x-1/2 flex space-x-2">
           {images.map((_, index) => (
             <button
               key={index}
@@ -124,13 +124,22 @@ export function HeroGallery({
       )}
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 right-8 hidden md:block">
-        <div className="flex flex-col items-center text-white/60">
-          <span className="text-xs tracking-widest rotate-90 origin-center mb-8">
-            SCROLL
-          </span>
-          <div className="w-px h-16 bg-white/40" />
-        </div>
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/50">
+        <span className="text-[10px] tracking-widest uppercase mb-1">Scroll</span>
+        <svg
+          className="w-5 h-5 scroll-bounce"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={1.5}
+            d="M19 9l-7 7-7-7"
+          />
+        </svg>
       </div>
     </section>
   );

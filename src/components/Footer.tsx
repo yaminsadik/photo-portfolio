@@ -14,13 +14,13 @@ interface FooterProps {
 
 export function Footer({ siteName, copyright, text, links }: FooterProps) {
   return (
-    <footer className="bg-gray-900 text-white py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-gray-900 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Logo */}
           <Link
             to="/"
-            className="text-xl font-light tracking-wider mb-6 md:mb-0"
+            className="text-xl font-light tracking-wider mb-6 md:mb-0 hover:text-white/70 transition-colors duration-200"
           >
             {siteName}
           </Link>
@@ -32,7 +32,7 @@ export function Footer({ siteName, copyright, text, links }: FooterProps) {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
+                  className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   {link.label}
                 </Link>
@@ -42,7 +42,7 @@ export function Footer({ siteName, copyright, text, links }: FooterProps) {
         </div>
 
         {/* Bottom */}
-        <div className="mt-8 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+        <div className="mt-8 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-2">
           <p>{copyright}</p>
           {text && <p className="mt-2 md:mt-0">{text}</p>}
         </div>

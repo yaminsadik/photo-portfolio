@@ -33,7 +33,7 @@ export function AboutSection({
             <p className="text-sm tracking-widest text-gray-500 uppercase mb-2">
               {title}
             </p>
-            <h2 className="text-3xl md:text-4xl font-light tracking-wide text-gray-900 mb-8">
+            <h2 className="text-3xl md:text-4xl font-serif font-light tracking-wide text-gray-900 mb-8">
               {subtitle}
             </h2>
 
