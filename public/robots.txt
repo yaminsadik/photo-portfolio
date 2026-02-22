@@ -4,4 +4,4 @@ Allow: /
 # Disallow admin or private paths (none currently, placeholder)
 # Disallow: /admin/
 
-Sitemap: https://photo-portfolio-grri.onrender.com/sitemap.xml
+Sitemap: https://sadikvisuals.vercel.app/sitemap.xml

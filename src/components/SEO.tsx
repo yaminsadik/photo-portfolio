@@ -6,7 +6,7 @@
  * <link> elements rendered in components up into <head>.
  */
 
-const SITE_URL = "https://photo-portfolio-grri.onrender.com";
+const SITE_URL = "https://sadikvisuals.vercel.app";
 const SITE_NAME = "Sadik Visuals";
 const DEFAULT_IMAGE = `${SITE_URL}/images/hero/hero-1.jpg`;
 

@@ -11,9 +11,9 @@ const aboutJsonLd = {
   mainEntity: {
     "@type": "Person",
     name: "Sadik Visuals",
-    url: "https://photo-portfolio-grri.onrender.com/about",
+    url: "https://sadikvisuals.vercel.app/about",
     image:
-      "https://photo-portfolio-grri.onrender.com/images/about/photographer.jpg",
+      "https://sadikvisuals.vercel.app/images/about/photographer.jpg",
     description:
       "Professional photographer with 8+ years of experience based in St. Louis, MO. Specialising in candid portraits, lifestyle, and documentary photography. 200+ stories captured, 150+ happy clients.",
     jobTitle: "Professional Photographer",
@@ -49,7 +49,7 @@ export function AboutPage() {
         title="About – The Story Behind the Lens"
         description="Meet the photographer behind Sadik Visuals. 8+ years of experience, 200+ stories captured, 150+ happy clients. Based in St. Louis, MO, specialising in candid, lifestyle, and documentary photography."
         path="/about"
-        image="https://photo-portfolio-grri.onrender.com/images/about/photographer.jpg"
+        image="https://sadikvisuals.vercel.app/images/about/photographer.jpg"
         jsonLd={aboutJsonLd}
       />
       {/* Page Header */}
