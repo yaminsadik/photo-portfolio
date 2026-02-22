@@ -200,7 +200,7 @@ export const aboutContent = {
     "Whether documenting quiet intimacy or vibrant energy, my goal is always the same: to create photographs that you'll treasure for years to come.",
   ],
   image: '/images/about/photographer.jpg',
-  imageAlt: 'Photographer at work',
+  imageAlt: 'Sadik Yamin – professional photographer based in St. Louis, MO',
   stats: [
     { label: 'Years of Experience', value: '8+' },
     { label: 'Stories Captured', value: '200+' },

@@ -10,12 +10,19 @@ const aboutJsonLd = {
   "@type": "ProfilePage",
   mainEntity: {
     "@type": "Person",
-    name: "Sadik Visuals",
+    name: "Sadik Yamin",
+    alternateName: "Sadik Visuals",
     url: "https://sadikvisuals.vercel.app/about",
-    image:
-      "https://sadikvisuals.vercel.app/images/about/photographer.jpg",
+    image: {
+      "@type": "ImageObject",
+      url: "https://sadikvisuals.vercel.app/images/about/photographer.jpg",
+      name: "Sadik Yamin – Professional Photographer",
+      description: "Portrait of Sadik Yamin, professional photographer based in St. Louis, MO.",
+      caption: "Sadik Yamin – photographer specialising in candid portraits, lifestyle, and documentary photography.",
+      representativeOfPage: true,
+    },
     description:
-      "Professional photographer with 8+ years of experience based in St. Louis, MO. Specialising in candid portraits, lifestyle, and documentary photography. 200+ stories captured, 150+ happy clients.",
+      "Sadik Yamin is a professional photographer with 8+ years of experience based in St. Louis, MO. Specialising in candid portraits, lifestyle, and documentary photography. 200+ stories captured, 150+ happy clients.",
     jobTitle: "Professional Photographer",
     address: {
       "@type": "PostalAddress",
@@ -46,8 +53,8 @@ export function AboutPage() {
   return (
     <main className="pt-20">
       <SEO
-        title="About – The Story Behind the Lens"
-        description="Meet the photographer behind Sadik Visuals. 8+ years of experience, 200+ stories captured, 150+ happy clients. Based in St. Louis, MO, specialising in candid, lifestyle, and documentary photography."
+        title="About – Sadik Yamin, The Story Behind the Lens"
+        description="Meet Sadik Yamin, the photographer behind Sadik Visuals. 8+ years of experience, 200+ stories captured, 150+ happy clients. Based in St. Louis, MO, specialising in candid, lifestyle, and documentary photography."
         path="/about"
         image="https://sadikvisuals.vercel.app/images/about/photographer.jpg"
         jsonLd={aboutJsonLd}
